@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-interface Props {
+export interface Props {
   small?: boolean;
 }
 
@@ -13,7 +13,7 @@ const LogoWrapper = styled.span<Props>`
 `
 
 const Logo = ({ small = false }: Props) => (
-  <LogoWrapper small={small}>MOVIE APP</LogoWrapper>
+  <LogoWrapper small={small} data-testid="logo">MOVIE APP</LogoWrapper>
 )
 
 export default Logo
