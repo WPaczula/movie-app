@@ -10,5 +10,6 @@
         "Orta.vscode-jest",
         "streetsidesoftware.code-spell-checker",
         "wix.vscode-import-cost",
+        "jpoissonnier.vscode-styled-components"
     ]
 }
