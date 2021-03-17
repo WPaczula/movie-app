@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "coenraads.bracket-pair-colorizer-2",
+        "christian-kohler.path-intellisense",
+        "dbaeumer.vscode-eslint",
+        "dsznajder.es7-react-js-snippets",
+        "eamodio.gitlens",
+        "stylelint.vscode-stylelint",
+        "msjsdiag.debugger-for-chrome",
+        "Orta.vscode-jest",
+        "streetsidesoftware.code-spell-checker",
+        "wix.vscode-import-cost",
+    ]
+}

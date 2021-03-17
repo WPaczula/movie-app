@@ -1,9 +1,9 @@
-import Test from 'components/test/Test';
+import Test from 'components/test/Test'
 
-function App() {
+function App () {
   return (
     <Test />
-  );
+  )
 }
 
-export default App;
+export default App
