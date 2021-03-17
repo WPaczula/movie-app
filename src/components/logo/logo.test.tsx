@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react'
+import { logoSize, logoSizeSmall } from 'styles/fontSize'
 import renderWithTheme from 'test/renderWithTheme'
-import theme from 'theme'
 import Logo, { Props } from './Logo'
 
 describe('Logo', () => {
@@ -13,7 +13,7 @@ describe('Logo', () => {
 
     const logo = await screen.findByTestId('logo')
 
-    expect(logo).toHaveStyleRule('font-size', theme.type.logoSize)
+    expect(logo).toHaveStyleRule('font-size', logoSize)
   })
 
   it('should use small font if the small prop is set.', async () => {
@@ -22,6 +22,6 @@ describe('Logo', () => {
 
     const logo = await screen.findByTestId('logo')
 
-    expect(logo).toHaveStyleRule('font-size', theme.type.logoSizeSmall)
+    expect(logo).toHaveStyleRule('font-size', logoSizeSmall)
   })
 })

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { logoSize, logoSizeSmall } from 'styles/fontSize'
 
 export interface Props {
   small?: boolean;
@@ -6,8 +7,8 @@ export interface Props {
 
 const LogoWrapper = styled.span<Props>`
   color: ${({ theme }) => theme.colors.logo};
-  font-size: ${({ theme, small }) =>
-    small ? theme.type.fontSizeMedium : theme.type.logoSize};
+  font-size: ${({ small }) =>
+    small ? logoSizeSmall : logoSize};
   font-weight: bolder;
   letter-spacing: 1px;
 `

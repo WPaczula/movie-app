@@ -2,6 +2,7 @@ import Container from 'components/container/Container'
 import Logo from 'components/logo/Logo'
 import React from 'react'
 import styled from 'styled-components'
+import { fontSizeSmall } from 'styles/fontSize'
 
 const FooterWrapper = styled.footer`
   width: 100wh;
@@ -18,7 +19,7 @@ const ContentWrapper = styled.div`
 
 const Legal = styled.p`
   color: ${({ theme }) => theme.colors.textInverse};
-  font-size: ${({ theme }) => theme.type.fontSizeSmall};
+  font-size: ${fontSizeSmall};
 `
 
 const Footer = () => {

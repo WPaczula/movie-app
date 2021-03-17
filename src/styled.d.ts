@@ -10,13 +10,6 @@ declare module 'styled-components' {
       text: string
       textInverse: string
       logo: string
-   },
-   type: {
-       fontSizeLarge: string
-       fontSizeMedium: string
-       fontSizeSmall: string
-       logoSize: string,
-       logoSizeSmall: string
-   },
+   }
   }
 }
