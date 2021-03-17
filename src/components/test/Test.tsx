@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => props.theme.colors.primary};
-  font-size: ${props => props.theme.type.fontSizeLarge};
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.type.fontSizeLarge};
   font-weight: bold;
+  flex: 1
 `
 
 const Test = () => <Container>
