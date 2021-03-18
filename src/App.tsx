@@ -1,9 +1,9 @@
 import GlobalStyle from 'globalStyle'
 import { ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
-import Test from 'components/test/Test'
 import theme from 'theme'
 import Layout from 'layout/Layout'
+import Main from 'routes/main/Main'
 
 function App () {
   return (
@@ -12,7 +12,7 @@ function App () {
         <Reset />
         <GlobalStyle />
         <Layout>
-          <Test />
+          <Main />
         </Layout>
       </>
     </ThemeProvider>

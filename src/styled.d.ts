@@ -10,6 +10,7 @@ declare module 'styled-components' {
       text: string
       textInverse: string
       logo: string
+      shadow: string
    }
   }
 }

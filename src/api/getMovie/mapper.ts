@@ -1,11 +1,14 @@
 import { Movie } from 'types/Movie'
-import { MovieDto } from './MovieDto'
+import { PagedResponse } from 'types/PagedResponse'
+import { MovieDto, ApiPagedResponse } from './MovieDto'
 
-export const mapMovie = (movieDto: MovieDto): Movie => ({
+const mapMovie = (movieDto: MovieDto): Movie => ({
   image: movieDto.Poster,
-  imdbRating: movieDto.imdbRating,
-  imdbVotes: movieDto.imdbVotes,
-  plot: movieDto.Plot,
   title: movieDto.Title,
   year: movieDto.Year
+})
+
+export const mapResponse = (response: ApiPagedResponse<MovieDto>): PagedResponse<Movie> => ({
+  search: response.Search.map(mapMovie),
+  totalResults: parseInt(response.totalResults)
 })

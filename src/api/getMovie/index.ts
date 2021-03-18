@@ -1,5 +1,5 @@
 import { get } from '../fetchHelper'
-import { mapMovie } from './mapper'
-import { MovieDto } from './MovieDto'
+import { mapResponse } from './mapper'
+import { ApiPagedResponse, MovieDto } from './MovieDto'
 
-export const getMovie = (search: string) => get<MovieDto>({ s: search }).then(dto => mapMovie(dto))
+export const getMovie = (page: number, search: string) => get<ApiPagedResponse<MovieDto>>({ page, s: search }).then(response => mapResponse(response))
