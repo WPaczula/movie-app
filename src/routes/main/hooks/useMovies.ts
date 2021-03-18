@@ -7,16 +7,16 @@ import { useDebounce } from 'use-debounce'
 const useMovies = (page: number, search: string) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | undefined>()
-  const [movies, setMovies] = useState<PagedResponse<Movie> | undefined>()
+  const [data, setData] = useState<PagedResponse<Movie> | undefined>()
 
   const [debouncedSearch] = useDebounce(search, 250)
 
   useEffect(() => {
-    async function loadMovie () {
+    async function loadMovies () {
       try {
         setLoading(true)
         const movie = await getMovie(page, debouncedSearch)
-        setMovies(movie)
+        setData(movie)
       } catch (e) {
         setError(e.reason)
       } finally {
@@ -25,14 +25,14 @@ const useMovies = (page: number, search: string) => {
     }
 
     if (debouncedSearch) {
-      loadMovie()
+      loadMovies()
     }
   }, [debouncedSearch])
 
   return {
     loading,
     error,
-    movie: movies
+    data
   }
 }
 
