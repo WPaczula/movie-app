@@ -1,29 +1,14 @@
 import { useEffect, useState } from 'react'
 import noImage from 'assets/no-image.png'
 import loading from 'assets/loading.png'
-import styled, { css, keyframes } from 'styled-components'
+import { AnimatedImage } from './styles'
 
-interface Props {
+export interface Props {
     className?: string
     src: string
 }
 
-const fadeIn = keyframes`
-    from {
-        opacity: 0
-    }
-
-    to {
-        opacity: 1
-    }
-`
-
-const AnimatedImage = styled.img<{ loaded: boolean }>`
-    animation: ${({ loaded }) => loaded ? css`${fadeIn} 0.5s linear` : 'none'};
-    transition: opacity 0.5 linear;
-`
-
-const LoadingImage = ({ src, className }: Props) => {
+const ImageComponent = ({ src, className }: Props) => {
   const [imageSrc, setImageSrc] = useState(loading)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
@@ -61,8 +46,8 @@ const LoadingImage = ({ src, className }: Props) => {
   }, [imageLoaded, imageError])
 
   return (
-        <AnimatedImage className={className} src={imageSrc} loaded={imageLoaded} />
+    <AnimatedImage className={className} src={imageSrc} loaded={imageLoaded} />
   )
 }
 
-export default LoadingImage
+export default ImageComponent

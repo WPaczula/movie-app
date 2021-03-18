@@ -1,4 +1,4 @@
-import LoadingImage from 'components/image/Image'
+import ImageComponent from 'components/image/Image'
 import styled from 'styled-components'
 import { fontSizeMedium } from 'styles/fontSize'
 
@@ -13,7 +13,7 @@ export const CardWrapper = styled.div`
     background-color: black;
 `
 
-export const MovieImage = styled(LoadingImage)`
+export const MovieImage = styled(ImageComponent)`
     object-fit: cover;
     overflow: hidden;
     flex: 1;
