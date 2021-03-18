@@ -2,31 +2,36 @@ import { getMovie } from 'api/getMovie'
 import { Movie } from 'types/Movie'
 import { PagedResponse } from 'types/PagedResponse'
 import { useDebounce } from 'use-debounce'
-import { useQuery, useQueryClient } from 'react-query'
+import { QueryObserverResult, useQuery, useQueryClient } from 'react-query'
 import { useEffect, useState } from 'react'
 
 const usePrefetchNextPage = (currentPage: number, search: string) => {
   const queryClient = useQueryClient()
-  queryClient.prefetchQuery(['movies', currentPage + 1, search], () => getMovie(currentPage + 1, search))
+
+  useEffect(() => {
+    queryClient.prefetchQuery(['movies', currentPage + 1, search], () => getMovie(currentPage + 1, search))
+  }, [currentPage, search])
 }
 
-const useMovies = (page: number, search: string) => {
-  const [debouncedSearch] = useDebounce(search, 250)
+export type MoviesResult = QueryObserverResult<PagedResponse<Movie>> & {
+  totalPages?: number
+}
+
+const useMovies = (page: number, search: string): MoviesResult => {
+  const [debouncedSearch] = useDebounce(search, 150)
   const [totalPages, setTotalPages] = useState<number | undefined>()
 
-  const { data, isLoading, isError } = useQuery<PagedResponse<Movie>>(['movies', page, debouncedSearch], () => getMovie(page, debouncedSearch))
+  const query = useQuery<PagedResponse<Movie>>(['movies', page, debouncedSearch], () => getMovie(page, debouncedSearch))
   usePrefetchNextPage(page, debouncedSearch)
 
   useEffect(() => {
-    if (data?.totalResults && !totalPages) {
-      setTotalPages(Number(data.totalResults))
+    if (query.data?.totalResults) {
+      setTotalPages(query.data.totalResults)
     }
-  }, [data])
+  }, [query.data])
 
   return {
-    isLoading,
-    isError,
-    data,
+    ...query,
     totalPages
   }
 }
