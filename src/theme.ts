@@ -8,7 +8,8 @@ const theme: DefaultTheme = {
     text: '#343434',
     textInverse: '#FFFFFF',
     logo: '#FFFFFF',
-    shadow: '#CCCCCC'
+    shadow: '#CCCCCC',
+    disabled: '#AAAAAA'
   }
 }
 

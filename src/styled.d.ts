@@ -11,6 +11,7 @@ declare module 'styled-components' {
       textInverse: string
       logo: string
       shadow: string
+      disabled: string
    }
   }
 }

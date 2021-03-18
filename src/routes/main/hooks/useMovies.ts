@@ -27,7 +27,7 @@ const useMovies = (page: number, search: string) => {
     if (debouncedSearch) {
       loadMovies()
     }
-  }, [debouncedSearch])
+  }, [debouncedSearch, page])
 
   return {
     loading,

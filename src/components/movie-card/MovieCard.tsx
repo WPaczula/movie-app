@@ -1,3 +1,4 @@
+import Image from 'components/image/Image'
 import styled from 'styled-components'
 import { fontSizeMedium } from 'styles/fontSize'
 import { Movie } from 'types/Movie'
@@ -12,14 +13,14 @@ const CardWrapper = styled.div`
     border-radius: 4px;
     box-shadow: 0px 0px 15px 5px ${({ theme }) => theme.colors.shadow};
     height: 23em;
-    width: 16em;
+    width: 14em;
     display: flex;
-    position: relative;
 `
 
-const MovieImage = styled.img`
+const MovieImage = styled(Image)`
     object-fit: cover;
-    height: 18em;
+    overflow: hidden;
+    flex: 1;
     object-position: center;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -29,15 +30,15 @@ const Gradient = styled.div`
     position: absolute;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    bottom: 2em;
+    bottom: 75%;
     left: 0;
     right: 0;
-    top: 15em;
+    top: -2em;
     background-image: linear-gradient(transparent, black, black);
 `
 
 const InfoContainer = styled.div`
-    height: 7em;
+    flex: 0 0 3em;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     display: flex;
@@ -55,14 +56,15 @@ const Title = styled.h1`
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 2px;
+    position: relative;
 `
 
 const MovieCard = ({ movie }: Props) => {
   return (
         <CardWrapper>
             <MovieImage src={movie.image} />
-            <Gradient />
             <InfoContainer>
+                <Gradient />
                 <Title>
                     {movie.title}
                 </Title>
