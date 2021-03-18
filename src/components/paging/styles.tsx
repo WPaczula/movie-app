@@ -17,7 +17,6 @@ export const PageLink = styled.li<{active?: boolean, disabled?: boolean}>`
     margin: 1px;
     user-select: none;
     width: 2em;
-    font-weight: 600;
 
     background-color: ${({ theme, active }) => active ? theme.colors.primary : 'transparent'};
     color: ${({ theme, active, disabled }) => {
@@ -25,6 +24,6 @@ export const PageLink = styled.li<{active?: boolean, disabled?: boolean}>`
             return theme.colors.disabled
         }
 
-        return active ? theme.colors.textInverse : theme.colors.text
+        return active ? theme.colors.textInverse : theme.colors.primary
     }};
 `
