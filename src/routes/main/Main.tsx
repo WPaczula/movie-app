@@ -8,17 +8,17 @@ import { MovieContainer, PagingContainer } from './styles'
 
 const Main = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  const { data } = useMovies(currentPage, 'Batman')
+  const { data, isLoading, totalPages } = useMovies(currentPage, 'Batman')
 
-  const movies: Array<Movie | undefined> = data ? data.search : Array(10).fill(undefined)
+  const movies: Array<Movie | undefined> = (data && !isLoading) ? data.search : Array(10).fill(undefined)
 
   return (
     <Container>
       <MovieContainer>
-        {movies.map(c => c === undefined ? <div>Loading</div> : <MovieCard movie={c} />)}
+        {movies.map((m, i) => !m ? <MovieCard.Loading key={`loading-${i}`} /> : <MovieCard key={`${m.title}-${i}`} movie={m} />)}
       </MovieContainer>
       <PagingContainer>
-        { data?.totalResults && <Paging totalPages={Number(data.totalResults)} changeCurrentPage={setCurrentPage} initialPage={currentPage} />}
+        { totalPages && <Paging totalPages={totalPages} changeCurrentPage={setCurrentPage} initialPage={currentPage} />}
       </PagingContainer>
     </Container>
   )
