@@ -10,7 +10,7 @@ const LogoWrapper = styled.span<Props>`
   font-size: ${({ small }) =>
     small ? logoSizeSmall : logoSize};
   font-weight: bolder;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 `
 
 const Logo = ({ small = false }: Props) => (

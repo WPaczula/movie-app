@@ -18,7 +18,7 @@ export type MoviesResult = QueryObserverResult<PagedResponse<Movie>> & {
 }
 
 const useMovies = (page: number, search: string): MoviesResult => {
-  const [debouncedSearch] = useDebounce(search, 150)
+  const [debouncedSearch] = useDebounce(search, 250)
   const [totalPages, setTotalPages] = useState<number | undefined>()
 
   const query = useQuery<PagedResponse<Movie>>(['movies', page, debouncedSearch], () => getMovie(page, debouncedSearch))

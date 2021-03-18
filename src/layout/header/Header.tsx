@@ -4,8 +4,7 @@ import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
   background-color: ${({ theme }) => theme.colors.secondary};
-  display: flex;
-  padding: 0.5em 0;
+  padding: 1em 0;
 `
 
 const Header = () => {
