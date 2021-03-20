@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import Container from 'components/container/Container'
 import Heading from 'components/heading/Heading'
 import Label from 'components/label/Label'

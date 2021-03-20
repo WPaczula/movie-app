@@ -5,6 +5,7 @@ import theme from 'theme'
 import Layout from 'layout/Layout'
 import Main from 'routes/main/Main'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import ErrorBoundary from 'error-boundary/ErrorBoundary'
 
 const client = new QueryClient({
   defaultOptions: {
@@ -17,15 +18,17 @@ const client = new QueryClient({
 
 function App () {
   return (
-    <ThemeProvider theme={theme}>
-      <QueryClientProvider client={client}>
-        <Reset />
-        <GlobalStyle />
-        <Layout>
-          <Main />
-        </Layout>
-      </ QueryClientProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider theme={theme}>
+        <QueryClientProvider client={client}>
+          <Reset />
+          <GlobalStyle />
+          <Layout>
+            <Main />
+          </Layout>
+        </ QueryClientProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   )
 }
 
