@@ -8,6 +8,6 @@ export interface MovieDto {
 
 export interface ApiPagedResponse<T> {
     Response: string
-    Search: Array<T>
-    totalResults: string
+    Search?: Array<T>
+    totalResults?: string
 }

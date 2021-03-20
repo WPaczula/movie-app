@@ -4,8 +4,7 @@ import Label from 'components/label/Label'
 import MovieCard from 'components/movie-card/MovieCard'
 import Paging from 'components/paging/Paging'
 import Spinner from 'components/spinner/Spinner'
-import { ChangeEvent, useEffect, useMemo, useState } from 'react'
-import { Movie } from 'types/Movie'
+import { ChangeEvent, useEffect, useState } from 'react'
 import useMovies from './hooks/useMovies'
 import { MovieContainer, PagingContainer, SearchInput, PrimaryMessage, Description, ContentContainer } from './styles'
 
@@ -13,7 +12,7 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchText, setSearchText] = useState('')
   const { data, isLoading, totalPages } = useMovies(currentPage, searchText)
-  const movies: Array<Movie | undefined> = useMemo(() => data ? data.search : Array(10).fill(undefined), [data])
+
   // eslint-disable-next-line no-debugger
   const hasNoResults = searchText !== '' && !isLoading && data?.response === false
 
@@ -36,12 +35,12 @@ const Main = () => {
         <ContentContainer>
         {
           isLoading
-            ? <Spinner />
-            : data?.response === true
-              ? <MovieContainer>
-                  { movies.map((m, i) => !m ? <MovieCard.Loading key={`loading-${i}`} /> : <MovieCard key={`${m.title}-${i}`} movie={m} />) }
+            ? <Spinner data-testid="spinner" />
+            : (data && data?.response === true)
+                ? <MovieContainer>
+                  { data.search.map((m, i) => <MovieCard key={`${m.title}-${i}`} movie={m} />) }
                 </MovieContainer>
-              : hasNoResults && <>
+                : hasNoResults && <>
                   <PrimaryMessage>No results found</PrimaryMessage>
                   <Description>Try to use different search phrase</Description>
                 </>

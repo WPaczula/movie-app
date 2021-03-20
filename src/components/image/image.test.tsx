@@ -29,7 +29,7 @@ describe('Image', () => {
     const { container } = renderImage({ src })
     const imageComponent = container.firstChild
 
-    await act(() => {
+    act(() => {
       const event = {} as Event
       ImageMock.onload!(event)
     })
@@ -42,7 +42,7 @@ describe('Image', () => {
     const { container } = renderImage({ src })
     const imageComponent = container.firstChild
 
-    await act(() => {
+    act(() => {
       const event = {} as Event
       ImageMock.onerror!(event)
     })

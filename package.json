@@ -47,6 +47,16 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/App.tsx",
+      "!src/test/*.ts",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts"
+    ]
+  },
   "devDependencies": {
     "@testing-library/dom": "^7.21.4",
     "@testing-library/react-hooks": "^5.1.0",

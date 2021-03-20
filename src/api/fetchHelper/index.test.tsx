@@ -33,5 +33,15 @@ describe('fetchHelper', () => {
         expect(e).toEqual({ reason: data.Error, status })
       }
     })
+
+    it('should reject promise with default reason and 400 if the request fails with unknown error', async () => {
+      mockedAxios.get.mockReturnValue(Promise.reject(new Error()))
+
+      try {
+        await get({ page: 100 })
+      } catch (e) {
+        expect(e).toEqual({ reason: 'Unknown error occurred', status: 400 })
+      }
+    })
   })
 })

@@ -1,4 +1,4 @@
-import { getMovie } from 'api/getMovie'
+import { getMovies } from 'api/getMovies'
 import { Movie } from 'types/Movie'
 import { PagedResponse } from 'types/PagedResponse'
 import { useDebounce } from 'use-debounce'
@@ -11,7 +11,7 @@ const usePrefetchNextPage = (currentPage: number, search: string) => {
   const queryClient = useQueryClient()
 
   useEffect(() => {
-    queryClient.prefetchQuery(['movies', currentPage + 1, search], () => getMovie(currentPage + 1, search))
+    queryClient.prefetchQuery(['movies', currentPage + 1, search], () => getMovies(currentPage + 1, search))
   }, [currentPage, search])
 }
 
@@ -31,10 +31,11 @@ const useLoadingIndication = (setIsLoading: (isLoading: boolean) => void, search
   }, [search])
 }
 
+const ITEMS_PER_PAGE = 10
 const useTotalPageManagement = (data: PagedResponse<Movie> | undefined, setTotalPages: (pages: number) => void, debouncedSearch: string) => {
   useEffect(() => {
     if (data?.totalResults) {
-      setTotalPages(data.totalResults)
+      setTotalPages(Math.ceil(data.totalResults / ITEMS_PER_PAGE))
     }
   }, [data])
 
@@ -56,7 +57,7 @@ const useMovies = (page: number, search: string): MoviesResult => {
   const [totalPages, setTotalPages] = useState<number | undefined>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const { data } = useQuery<PagedResponse<Movie>>(['movies', page, debouncedSearch], () => getMovie(page, debouncedSearch), { refetchOnWindowFocus: false })
+  const { data } = useQuery<PagedResponse<Movie>>(['movies', page, debouncedSearch], () => getMovies(page, debouncedSearch), { refetchOnWindowFocus: false })
 
   usePrefetchNextPage(page, debouncedSearch)
   useLoadingIndication(setIsLoading, search)

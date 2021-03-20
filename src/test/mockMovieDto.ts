@@ -1,4 +1,4 @@
-import { MovieDto } from 'api/getMovie/MovieDto'
+import { MovieDto } from 'api/getMovies/MovieDto'
 
 const getMockMovieDto = (): MovieDto => ({
   Title: 'Guardians of the Galaxy',
