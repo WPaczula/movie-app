@@ -2,6 +2,10 @@ import ErrorBoundary from './ErrorBoundary'
 import { render, screen } from '@testing-library/react'
 
 describe('ErrorBoundary', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
   it('should handle errors gracefully', async () => {
     const Child = () => { throw new Error() }
 
