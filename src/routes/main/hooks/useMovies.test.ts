@@ -25,7 +25,7 @@ describe('useMovies', () => {
     mockGetMovie.mockReturnValue(Promise.resolve(data))
     const { waitFor, result } = renderUseMovies(page, search)
 
-    await waitFor(() => result.current.isSuccess)
+    await waitFor(() => !result.current.isLoading)
 
     expect(mockGetMovie).toHaveBeenCalledWith(page, search)
     expect(result.current.data).toEqual(data)

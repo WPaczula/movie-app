@@ -1,15 +1,17 @@
 import styled from 'styled-components'
-
-const breakpointSmall = '768px'
+import { desktop } from 'styles/responsive'
 
 const Container = styled.div`
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     width: 90%;
     margin-right: auto;
     margin-left: auto;
     
-    @media (min-width: ${breakpointSmall}) {
+    ${desktop`
         max-width: 90em;
-    }
+    `};
 `
 
 export default Container

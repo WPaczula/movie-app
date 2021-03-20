@@ -26,30 +26,32 @@ const Main = () => {
   }
 
   return (
-    <Container>
-      <Heading>Find movies</Heading>
-      <Label htmlFor="search">
-        Search
-      </Label>
-      <SearchInput id="search" name="search" onChange={onChange} value={searchText} />
-      <ContentContainer>
-      {
-        isLoading
-          ? <Spinner />
-          : data?.response === true
-            ? <MovieContainer>
-                { movies.map((m, i) => !m ? <MovieCard.Loading key={`loading-${i}`} /> : <MovieCard key={`${m.title}-${i}`} movie={m} />) }
-              </MovieContainer>
-            : hasNoResults && <>
-                <PrimaryMessage>No results found</PrimaryMessage>
-                <Description>Try to use different search phrase</Description>
-              </>
-      }
-      </ContentContainer>
+    <>
+      <Container>
+        <Heading>Find movies</Heading>
+        <Label htmlFor="search">
+          Search
+        </Label>
+        <SearchInput id="search" name="search" onChange={onChange} value={searchText} />
+        <ContentContainer>
+        {
+          isLoading
+            ? <Spinner />
+            : data?.response === true
+              ? <MovieContainer>
+                  { movies.map((m, i) => !m ? <MovieCard.Loading key={`loading-${i}`} /> : <MovieCard key={`${m.title}-${i}`} movie={m} />) }
+                </MovieContainer>
+              : hasNoResults && <>
+                  <PrimaryMessage>No results found</PrimaryMessage>
+                  <Description>Try to use different search phrase</Description>
+                </>
+        }
+        </ContentContainer>
+      </Container>
       <PagingContainer>
         <Paging totalPages={totalPages || 1} changeCurrentPage={setCurrentPage} currentPage={currentPage} />
       </PagingContainer>
-    </Container>
+    </>
   )
 }
 

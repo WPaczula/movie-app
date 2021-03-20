@@ -17,9 +17,14 @@ export const MovieContainer = styled.div`
 
 export const PagingContainer = styled.div`
     display: flex;
+    flex: 0 0 auto;
     width: 100%;
-    margin: 2.5em 0;
+    padding: 1em 0;
     justify-content: center;
+    position: fixed;
+    top: calc(100vh - 4em);
+    background-color: ${({ theme }) => theme.colors.background};
+    box-shadow: 1px 0 2px 2px ${({ theme }) => theme.colors.shadow};
 `
 
 export const SearchInput = styled(Input)`
@@ -27,7 +32,7 @@ export const SearchInput = styled(Input)`
 `
 
 export const ContentContainer = styled.div`
-    min-height: 42em;
+    flex: 1;
     margin: 1em 0;
     display: flex;
     flex-direction: column;
