@@ -1,20 +1,20 @@
-import React, { KeyboardEvent, useState } from 'react'
+import React, { KeyboardEvent } from 'react'
+import { ReactComponent as LeftChevron } from 'assets/chevron_left-24px.svg'
+import { ReactComponent as RightChevron } from 'assets/chevron_right-24px.svg'
 import { getPages, PageItem } from './utils/getPages'
 import { PagesContainer, PageLink } from './styles'
 
 export interface Props {
   totalPages: number
-  initialPage?: number
   changeCurrentPage: (page: number) => void
+  currentPage: number
 }
 
-const Paging = ({ totalPages, initialPage = 1, changeCurrentPage }: Props) => {
-  const [currentPage, setCurrentPage] = useState(initialPage)
+const Paging = ({ totalPages, changeCurrentPage, currentPage }: Props) => {
   const previousDisabled = currentPage === 1
   const nextDisabled = currentPage === totalPages
 
   const goTo = (page: number) => {
-    setCurrentPage(page)
     changeCurrentPage(page)
   }
   const goPrevious = () => {
@@ -61,7 +61,7 @@ const Paging = ({ totalPages, initialPage = 1, changeCurrentPage }: Props) => {
         disabled={previousDisabled}
         data-testid="previous-page-chevron"
       >
-        {'<'}
+        <LeftChevron />
       </PageLink>
       {getPages(currentPage, totalPages).map((p) => (
         <PageLink
@@ -83,7 +83,7 @@ const Paging = ({ totalPages, initialPage = 1, changeCurrentPage }: Props) => {
         disabled={nextDisabled}
         data-testid="next-page-chevron"
       >
-        {'>'}
+        <RightChevron />
       </PageLink>
     </PagesContainer>
   )

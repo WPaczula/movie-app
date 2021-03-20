@@ -49,11 +49,11 @@ describe('useMovies', () => {
     const data = {} as PagedResponse<Movie>
     mockGetMovie.mockReturnValue(Promise.resolve(data))
     const { waitFor, rerender, result } = renderUseMovies(page, search)
-    await waitFor(() => result.current.isSuccess)
+    await waitFor(() => !result.current.isLoading)
 
     page = 1
     rerender()
-    await waitFor(() => result.current.isSuccess)
+    await waitFor(() => !result.current.isLoading)
 
     expect(mockGetMovie).toHaveBeenCalledWith(page, search)
     expect(result.current.data).toEqual(data)
@@ -66,7 +66,7 @@ describe('useMovies', () => {
     const data = { totalResults } as PagedResponse<Movie>
     mockGetMovie.mockReturnValue(Promise.resolve(data))
     const { waitFor, rerender, result } = renderUseMovies(page, search)
-    await waitFor(() => result.current.isSuccess)
+    await waitFor(() => !result.current.isLoading)
 
     page = 1
     rerender()

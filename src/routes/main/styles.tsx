@@ -26,15 +26,15 @@ export const SearchInput = styled(Input)`
     max-width: 20em;
 `
 
-export const NoResultsContainer = styled.div`
-    min-height: 39.5em;
+export const ContentContainer = styled.div`
+    min-height: 42em;
     margin: 1em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 `
 
-export const NoResultsMessage = styled.p`
+export const PrimaryMessage = styled.p`
     font-size: ${fontSizeLarge};
     margin-bottom: 0.5em;
     text-align: center;

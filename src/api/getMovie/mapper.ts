@@ -9,7 +9,7 @@ const mapMovie = (movieDto: MovieDto): Movie => ({
 })
 
 export const mapResponse = (response: ApiPagedResponse<MovieDto>): PagedResponse<Movie> => ({
-  search: response.Search.map(mapMovie),
-  totalResults: parseInt(response.totalResults),
+  search: response.Search ? response.Search.map(mapMovie) : [],
+  totalResults: response.totalResults ? parseInt(response.totalResults) : 0,
   response: response.Response === 'True'
 })
