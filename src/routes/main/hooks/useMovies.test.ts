@@ -45,7 +45,7 @@ describe('useMovies', () => {
       rerender()
     })
 
-    expect(result.current.isLoading).toEqual(true)
+    expect(result.current.isLoading).toBe(true)
   })
 
   it('should not return loading when the search is empty', async () => {
@@ -56,7 +56,7 @@ describe('useMovies', () => {
 
     const { result } = renderUseMovies(page, search)
 
-    expect(result.current.isLoading).toEqual(false)
+    expect(result.current.isLoading).toBe(false)
   })
 
   it('should reset total pages if the search term has changed', () => {
@@ -74,7 +74,7 @@ describe('useMovies', () => {
       rerender()
     })
 
-    expect(result.current.totalPages).toEqual(0)
+    expect(result.current.totalPages).toBe(0)
   })
 
   it('should prefetch next page for faster loading', async () => {
@@ -118,6 +118,6 @@ describe('useMovies', () => {
     page = 1
     rerender()
 
-    expect(result.current.totalPages).toEqual(expectedTotalPages)
+    expect(result.current.totalPages).toBe(expectedTotalPages)
   })
 })

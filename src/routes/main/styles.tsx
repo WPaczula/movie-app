@@ -33,7 +33,7 @@ export const SearchInput = styled(Input)`
 
 export const ContentContainer = styled.div`
     flex: 1;
-    margin: 1em 0;
+    margin: 1em 0 5em;
     display: flex;
     flex-direction: column;
     justify-content: center;

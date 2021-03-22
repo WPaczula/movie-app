@@ -32,7 +32,7 @@ const useLoadingIndication = (setIsLoading: (isLoading: boolean) => void, search
 }
 
 const ITEMS_PER_PAGE = 10
-const useTotalPageManagement = (data: PagedResponse<Movie> | undefined, setTotalPages: (pages: number) => void, debouncedSearch: string) => {
+const useTotalPageManagement = (data: PagedResponse<Movie> | undefined, setTotalPages: (pages: number) => void, debouncedSearch: string, search: string) => {
   useEffect(() => {
     if (data?.totalResults) {
       setTotalPages(Math.ceil(data.totalResults / ITEMS_PER_PAGE))
@@ -44,6 +44,12 @@ const useTotalPageManagement = (data: PagedResponse<Movie> | undefined, setTotal
       setTotalPages(0)
     }
   }, [debouncedSearch])
+
+  useEffect(() => {
+    if (search === '') {
+      setTotalPages(0)
+    }
+  }, [search])
 }
 
 export type MoviesResult = {
@@ -61,7 +67,7 @@ const useMovies = (page: number, search: string): MoviesResult => {
 
   usePrefetchNextPage(page, debouncedSearch)
   useLoadingIndication(setIsLoading, search)
-  useTotalPageManagement(data, setTotalPages, debouncedSearch)
+  useTotalPageManagement(data, setTotalPages, debouncedSearch, search)
 
   return {
     data,

@@ -37,7 +37,7 @@ const Main = () => {
         {
           isLoading
             ? <Spinner data-testid="spinner" />
-            : (data && data?.response === true)
+            : (searchText && data && data?.response === true)
                 ? <MovieContainer>
                   { data.search.map((m, i) => <MovieCard key={`${m.title}-${i}`} movie={m} />) }
                 </MovieContainer>
