@@ -21,6 +21,10 @@ The app should display the UI based on the output from API.
 * Static testing with eslint
 * CI/CD with github actions
 
+## Approach 🛣
+
+I've used CRA and linting config from another project to speed things up. I've implemented only one page and everything is redirected to it on AWS level to gain on time. Same applies to the usage of react-query - the app is simple and redux would be an overkill for me. I've used mapping on the API layer, because the shape of data returned by it was weird - pascal case and strings instead of booleans. Common components like input were created to keep consistency in the further development. I've placed some styled components in a separate files whenever I felt like they make the whole thing less readable, especially when the components contained some logic.
+
 ## Quick start 👟
 
 0. Make sure you have git, node and yarn installed
